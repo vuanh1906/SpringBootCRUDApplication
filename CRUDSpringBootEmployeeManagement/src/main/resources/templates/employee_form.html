@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>[[${pageTitile}]]</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="text-center"><h2>[[${pageTitile}]]</h2></div>
+<form th:action="@{/employees/save}" method="post" th:object="${employee}" style="max-width: 500px; margin: 0 auto;">
+  <input type="hidden" th:field="*{id}">
+  <div class="form-group">
+    <label >Name</label>
+    <input type="text" class="form-control" th:field="*{name}">
+  </div>
+
+  <div class="form-group">
+    <label >Age</label>
+    <input type="text" class="form-control" th:field="*{age}">
+  </div>
+
+  <div class="form-group">
+  <label >Address</label>
+  <input type="text" class="form-control" th:field="*{address}">
+</div>
+  <div class="form-group">
+    <label >Image</label>
+    <input type="text" class="form-control" th:field="*{image}">
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary m-2">Save</button>
+    <button type="button" class="btn btn-primary m-2" onClick="cancelForm()">Cancel</button>
+  </div>
+</form>
+</body>
+<script type="text/javascript">
+  function cancelForm() {
+    window.location = "[[@{/employees}]]"
+  }
+</script>
+</html>
+
